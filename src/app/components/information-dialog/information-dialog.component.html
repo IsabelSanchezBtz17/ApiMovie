@@ -1,0 +1,43 @@
+
+  <div style="background-color:black;">
+    <h1 mat-dialog-title >
+  
+      <div >
+        <button mat-icon-button  style="color: white; margin-left: 500px;" (click)="onNoClick() ">
+          <mat-icon >close</mat-icon>
+        </button> 
+      </div>
+      <img mat-card-image  src= "https://image.tmdb.org/t/p/original/{{data.linkImagen}}" style="width: 200px; height: 200px; margin-left: 150px;">
+    </h1>
+<div mat-dialog-content  >
+
+
+
+
+  <h1>{{data.name}}</h1>
+  <p>{{data.descripcion}}</p>
+
+ 
+  <div style="display:flex">
+    <div style="margin-right:20px; margin-left: 10px; ">
+      <button mat-icon-button  (click)="add(data.id)">
+        <mat-icon>{{iconS(data.id)}}</mat-icon>
+      </button> <br>
+      <label style="color: white;"> Mi lista</label>
+    </div>
+  
+    
+    <div> 
+      <button mat-icon-button  (click)="votar(data.id)">
+        <mat-icon>{{iconL(data.id)}}</mat-icon>
+      </button> <br>
+      <label style="color: white;">Votar</label>
+    </div>
+    
+  </div>
+
+
+</div>
+
+
+
