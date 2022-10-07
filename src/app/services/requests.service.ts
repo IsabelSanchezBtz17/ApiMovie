@@ -1,5 +1,3 @@
-
-
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
 import { map } from 'rxjs';
@@ -25,6 +23,7 @@ export class RequestsService {
     )
   }
 
+
   getMoviesPopular(){
     return this.http.get(environment.API_URL+ 'trending/movie/day').pipe(
       map ((resp : any)=>{
@@ -35,6 +34,7 @@ export class RequestsService {
       })
     )
   }
+
 
 
   getImagenMovie(url: string ){
@@ -50,6 +50,62 @@ export class RequestsService {
       })
     )
   }
+
+
+// El agregar a localstore debe hacerse desde el servicio
+
+addMovie(id: string, key: string){
+  let myList= JSON.parse(localStorage.getItem(key)?? '[]');
+  if (myList.indexOf(id)== -1){ // -1 el elemento no se encuentra,  1 se encuentra
+    myList.push(id)
+    localStorage.setItem(key, JSON.stringify(myList))
+  } 
+
+}
+
+addMovieList(id: any){
+  this.addMovie(id, "myList")
+}
+
+addMovieListLikes(id: any){
+  this.addMovie(id, "myListLikes")
+}
+
+removeMovie(id: any , key: string){
+  let myList= JSON.parse(localStorage.getItem(key)?? '[]');
+ let index = myList.indexOf(id)
+
+  if (index >-1){ // -1 el elemento no se encuentra,  1 se encuentra
+    myList.splice(index,1)
+    localStorage.setItem(key, JSON.stringify(myList))
+  } 
+
+}
+
+removeMovieList(id: any){
+  this.removeMovie(id, "myList")
+}
+
+removeMovieListLikes(id: any){
+  this.removeMovie(id, "myListLikes")
+}
+
+checkMovie(id:any, key: string):boolean{
+  let myList= JSON.parse(localStorage.getItem(key)?? '[]');
+  return (myList.indexOf(id) > -1)
+
+}
+
+checkMovieList(id: any):boolean{
+  return this.checkMovie(id, "myList")
+}
+
+checkMovieListLikes(id: any): boolean{
+  return this.checkMovie(id, "myListLikes")
+}
+
+
+
 }
 
 

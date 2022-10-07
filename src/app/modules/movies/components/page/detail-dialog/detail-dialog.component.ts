@@ -15,11 +15,19 @@ export class DetailDialogComponent {
 
 
  addMovie(){
-
+    if(this.requestServices.checkMovieList(this.data.id)){
+      this.requestServices.removeMovieList(this.data.id)
+    } else {
+      this.requestServices.addMovieList(this.data.id)
+    }
  }
 
  addLike(){
-
+  if(this.requestServices.checkMovieListLikes(this.data.id)){
+    this.requestServices.removeMovieListLikes(this.data.id)
+  } else {
+    this.requestServices.addMovieListLikes(this.data.id)
+  }
  }
 
 }

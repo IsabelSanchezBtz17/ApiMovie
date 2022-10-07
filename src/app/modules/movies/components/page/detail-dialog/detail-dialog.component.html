@@ -35,7 +35,8 @@
     <mat-grid-tile colspan="1">
         <div>
             <button mat-icon-button  (click)="addMovie()" class="accion-icon">
-                <mat-icon >add</mat-icon>
+                <mat-icon *ngIf="!requestServices.checkMovieList(data.id)">add</mat-icon>
+                <mat-icon *ngIf="requestServices.checkMovieList(data.id)">done</mat-icon>
               </button> 
             <br>
             <label>  Mi lista </label>
@@ -45,10 +46,12 @@
     <mat-grid-tile colspan="1">
         <div>
             <button mat-icon-button  (click)="addLike()" class="accion-icon">
-                <mat-icon >thumb_up</mat-icon>
+                <mat-icon *ngIf="!requestServices.checkMovieListLikes(data.id)">thumb_up</mat-icon>
+                <mat-icon *ngIf="requestServices.checkMovieListLikes(data.id)">thumb_down</mat-icon>
               </button> 
             <br>
-            <label>  Calificar </label>
+            <label *ngIf="!requestServices.checkMovieListLikes(data.id)">Me gusta</label>
+            <label *ngIf="requestServices.checkMovieListLikes(data.id)">Calificado</label>
         </div>
     </mat-grid-tile>
 
