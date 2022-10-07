@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { RequestsTvService } from 'src/app/services/requests-tv.service';
+import { RequestsService } from 'src/app/services/requests.service';
 import { InformationDialogComponent } from '../information-dialog/information-dialog.component';
 
 @Component({
@@ -18,7 +18,7 @@ export class UnoComponent implements OnInit {
   public name1: string='';
   public movies1: any={};
   public description1: string='';
-constructor( private requestsService: RequestsTvService, public dialog: MatDialog){}
+constructor( private requestsService: RequestsService, public dialog: MatDialog){}
 
 ngOnInit(): void {
   this.popular();
@@ -55,7 +55,7 @@ findProgram( ){
 
 
    popular(){
-   this.requestsService.getMoviesPopulares().subscribe({
+   this.requestsService.getMoviesPopular().subscribe({
       next: (resp: any )=>{
         this.moviesPopular= resp.movies;
       },

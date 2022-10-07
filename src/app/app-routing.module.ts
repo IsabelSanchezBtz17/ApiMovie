@@ -1,26 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DosComponent } from './components/dos/dos.component';
-import { UnoComponent } from './components/uno/uno.component';
+import { MoviesModule } from './modules/movies/movies.module';
 
 const routes: Routes = [
 {
-  path :'terror',
-  component:  DosComponent,
+  path :'movie',
+  loadChildren:() => import('./modules/movies/movies.module').then(m => MoviesModule)
  
 },
 {
-  path :'ficcion',
-  component: DosComponent
-},
-{
-  path :'comedia',
-  component: DosComponent
+  path :'',
+  redirectTo: 'movie',
+  pathMatch:'full'
 },
 {
   path:'**',
-  component: UnoComponent,
-
+  redirectTo: 'movie',
 }
 ];
 

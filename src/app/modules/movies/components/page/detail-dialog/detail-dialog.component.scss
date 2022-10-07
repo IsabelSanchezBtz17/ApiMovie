@@ -1,0 +1,32 @@
+.movie-image{
+    height: 50%;
+    width: 100%;
+    background-size: cover;
+    position: relative;
+}
+
+.close-icon{
+    color: aliceblue;
+ position: absolute;
+ right: 5px;
+ top: 8px;
+}
+
+.title{
+    position: absolute;
+    bottom: 0;
+    height: 45px;
+    background-color: rgb(72 72 72 / 58%);
+    width: 96%;
+    color: aliceblue;
+    font-size: xx-large;
+    padding-left: 16px;
+    padding-top: 16px;
+}
+
+.description{
+    margin: 15px;
+    color: aliceblue;
+    text-align: center;
+    text-align: justify;
+}

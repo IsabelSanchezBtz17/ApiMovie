@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Constants } from 'src/app/utils/conts.class';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -9,7 +10,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const HEADER_REQUEST: HttpRequest<any> = request.clone({
-      params: (request.params ? request.params : new HttpParams()).set('api_key', '417b72a14eef2ebe72be5e7c60ef2b65')
+      params: (request.params ? request.params : new HttpParams()).set('api_key', Constants.API_KEY )
     })
     
     return next.handle(HEADER_REQUEST);

@@ -1,0 +1,5 @@
+
+<mat-card class="movie-target" *ngFor="let movie of movies" (click)="openDetailDialog(movie)">
+    <img [src]="requestsService.getImagenMovie(movie.poster_path)">
+</mat-card>
+

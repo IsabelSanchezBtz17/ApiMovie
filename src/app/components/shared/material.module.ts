@@ -8,7 +8,6 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatGridListModule} from '@angular/material/grid-list';
 @NgModule({
   declarations: [],
@@ -22,7 +21,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatListModule,
     MatCardModule,
     MatDialogModule,
-    MatFormFieldModule,
     MatGridListModule
 
   ],
@@ -36,7 +34,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatListModule,
     MatCardModule,
     MatDialogModule,
-    MatFormFieldModule,
     MatGridListModule
   ]
 })

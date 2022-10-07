@@ -2,3 +2,21 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.color{
+    color: white;
+}
+
+.mat-dialog-container{
+    padding: 0 !important;
+    background-color: black;
+}
+
+// Evita que el texto se selecione
+.no-select{ 
+    -webkit-touch-collout:none;
+    -webkit-user-select:none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+

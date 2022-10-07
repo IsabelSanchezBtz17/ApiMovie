@@ -1,0 +1,56 @@
+<div class="movie-image" [ngStyle]= "{'background-image' : 'url('+ requestServices.getImagenMovie(data.backdrop_path)+')' }">
+    <div >
+        <button mat-icon-button  [mat-dialog-close]="data" class="close-icon">
+            <mat-icon >close</mat-icon>
+          </button> 
+    </div>
+    <div class="title , color">
+        {{data.original_title}}
+    </div>
+</div>
+
+<mat-grid-list cols="6" rowHeight="50px" class="color">
+  
+    <mat-grid-tile colspan="2">
+        <label>
+            recommended by a {{data.vote_average / 10.0 | percent }}
+        </label>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="2">
+        <label>
+            {{data.release_date}}
+        </label>
+    </mat-grid-tile>
+
+</mat-grid-list>
+
+<div class="description">
+    {{data.overview}}
+</div>
+
+
+<mat-grid-list cols="6" rowHeight="70px" class="color">
+  
+    <mat-grid-tile colspan="1">
+        <div>
+            <button mat-icon-button  (click)="addMovie()" class="accion-icon">
+                <mat-icon >add</mat-icon>
+              </button> 
+            <br>
+            <label>  Mi lista </label>
+        </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="1">
+        <div>
+            <button mat-icon-button  (click)="addLike()" class="accion-icon">
+                <mat-icon >thumb_up</mat-icon>
+              </button> 
+            <br>
+            <label>  Calificar </label>
+        </div>
+    </mat-grid-tile>
+
+
+</mat-grid-list>

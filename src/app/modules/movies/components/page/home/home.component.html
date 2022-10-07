@@ -1,0 +1,42 @@
+
+   <mat-drawer-container  class="home-container">
+
+        <mat-drawer #drawer mode="side" class="menu">
+    
+            <app-menu></app-menu>
+    
+        </mat-drawer>
+    
+        <mat-drawer-content>
+    
+    
+            <mat-toolbar style="background-color: black;">
+              
+                <button mat-icon-button (click)="drawer.toggle()" >
+                    
+                    <mat-icon class="color"> menu </mat-icon>
+                </button>
+    
+                <span>
+                    <img src="https://i.ibb.co/VqnNRPd/Logo-Netflix.png" alt="Logo-Netflix" border="0"  class="logo">
+                </span>
+               
+                <span class="example-spacer"></span>
+    
+                
+                <button mat-icon-button class="color">
+                    <mat-icon>search</mat-icon>
+                </button>
+                
+                <button mat-icon-button class="color" >
+                    <mat-icon>more_horiz</mat-icon>
+             
+                </button>
+            </mat-toolbar>
+    
+    
+            <router-outlet></router-outlet>
+    
+        </mat-drawer-content>
+    
+    </mat-drawer-container>
