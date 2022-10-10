@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { __param } from 'tslib';
 import { RequestsService } from '../../../../../services/requests.service';
@@ -12,8 +12,11 @@ import { DetailDialogComponent } from '../detail-dialog/detail-dialog.component'
 })
 export class MoviesComponent implements OnInit {
 
-  public movies: any = [];
 
+  public movies: any = [];
+  public numPage: number= 1;
+
+  
   constructor(public requestsService: RequestsService, public activeRouter: ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -29,9 +32,9 @@ export class MoviesComponent implements OnInit {
   }
 
   getMovies(id: string) {
-    this.requestsService.getMovies(id).subscribe({
+    this.requestsService.getMovies(id, this.numPage.toString()).subscribe({
       next: (resp: any) => {
-        this.movies = resp.movies;
+        this.movies = this.movies.concat(resp.movies);
         console.log(this.movies)
       },
       error: (error: any) => {
@@ -41,9 +44,9 @@ export class MoviesComponent implements OnInit {
   }
 
   getPopular() {
-    this.requestsService.getMoviesPopular().subscribe({
+    this.requestsService.getMoviesPopular(this.numPage.toString()).subscribe({
       next: (resp: any) => {
-        this.movies = resp.movies;
+        this.movies = this.movies.concat(resp.movies);
         console.log(this.movies)
       },
       error: (error: any) => {
@@ -62,6 +65,22 @@ export class MoviesComponent implements OnInit {
         });
   }
 
+
+ detect(evento: any){
+  if (evento.target.offsetHeight +  evento.target.scrollTop >= evento.target.scrollHeight){
+    console.log('LLego al final')
+    this.numPage++
+   
+    console.log("Numero de pagina", this.numPage)
+    this.activeRouter.params.subscribe(params => {
+      if (JSON.stringify(params) == '{}') {
+        this.getPopular();
+      } else {
+        this.getMovies(params['id'])
+      }
+    })
+  }
+ }
 
 }
 

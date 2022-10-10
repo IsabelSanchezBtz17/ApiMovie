@@ -2,6 +2,11 @@
     padding: 0;
     width: 200px;
     height: 300px;
+    background-image: url("https://i.ibb.co/QPphBHW/loading.gif");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
 
 }
 
@@ -13,3 +18,14 @@
  img{
     margin: 0;
 }
+
+
+  .movie-container{
+    height: calc(100vh - 60px);
+    overflow-x: auto;
+  }
+
+  .center{
+    position: relative;
+    margin: 0px auto;
+  }

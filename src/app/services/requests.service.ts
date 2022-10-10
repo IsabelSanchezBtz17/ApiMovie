@@ -13,8 +13,8 @@ export class RequestsService {
 
  
 
-  getMovies(id: string){
-    return this.http.get(environment.API_URL+'discover/movie?with_genres='+ id).pipe(
+  getMovies(id: string, page: string){
+    return this.http.get(environment.API_URL+'discover/movie?with_genres='+ id+'&page='+ page).pipe(
       map ((resp : any)=>{
         return {
           movies: resp.results
@@ -24,8 +24,8 @@ export class RequestsService {
   }
 
 
-  getMoviesPopular(){
-    return this.http.get(environment.API_URL+ 'trending/movie/day').pipe(
+  getMoviesPopular(page: string){
+    return this.http.get(environment.API_URL+ 'trending/movie/day'+'?page='+ page).pipe(
       map ((resp : any)=>{
         console.log('populares', resp)
         return {
